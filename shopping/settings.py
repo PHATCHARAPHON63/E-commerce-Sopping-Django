@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-jmvm0ps*3ck$7nbqyw28#4f9*99p2y6n9!fv(hdo!u8_h!gz($
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://shopping12-5ce353a464b6.herokuapp.com/']
 
 
 # Application definition
@@ -128,3 +128,12 @@ MEDIA_ROOT=os.path.join(BASE_DIR,'media/')
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+import dj_database_url
+
+# ... other settings ...
+
+DATABASES = {
+    'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
+}
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
